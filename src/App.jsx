@@ -1,5 +1,7 @@
 // import { useState } from 'react'
 import './App.css'
+import { Button } from "./components/ui/button"
+
 
 function App() {
 
@@ -8,6 +10,7 @@ function App() {
       <h2>
         This is my first app
       </h2>
+      <div><Button>ClickMe</Button></div>
     </>
   )
 }
