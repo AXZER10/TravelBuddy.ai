@@ -10,7 +10,10 @@ function Header() {
                     TravelBuddy.ai
                 </div>
             </div>
-            <div>
+            <div className='justify-center items-center flex gap-3'>
+                <Button>
+                    <img src="/DarkModeIcon.png" alt="" className='h-5 rounded-3xl' />
+                </Button>
                 <Button>
                     Sign In
                 </Button>
