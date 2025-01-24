@@ -23,14 +23,6 @@ function CreateTrip() {
     //Toast popup for errors
     const { toast } = useToast()
     const { showToast } = useCustomToast()
-    // const showToast = (title, desc) => {
-    //     toast({
-    //         variant: "destructive",
-    //         title: title,
-    //         description: desc,
-    //         action: <ToastAction altText="Try again">Try again</ToastAction>
-    //     });
-    // }
 
     const onGenerateTrip = () => {
         if (
@@ -39,7 +31,17 @@ function CreateTrip() {
             formData?.noOfPeople ||
             formData?.budget
         ) {
-            console.log(formData)
+            if (formData?.noOfDays > 5) {
+                showToast("Invalid number of days", "The number of days should be less than 5")
+                return;
+            }
+            else if (formData?.noOfDays < 1) {
+                showToast("Invalid number of days", "The number of days should be more than 0")
+                return;
+            }
+            else {
+                console.log(formData)
+            }
         }
         if (
             !formData?.noOfDays ||
@@ -48,14 +50,6 @@ function CreateTrip() {
             !formData?.budget
         ) {
             showToast("Please Enter all details", "Fill in the missing details.");
-            return;
-        }
-        if (formData?.noOfDays > 5) {
-            showToast("Invalid number of days", "The number of days should be less than 5")
-            return;
-        }
-        if (formData?.noOfDays < 1) {
-            showToast("Invalid number of days", "The number of days should be more than 0")
             return;
         }
     }
