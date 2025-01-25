@@ -3,7 +3,7 @@ import { StrictMode } from "react";
 import './index.css'
 import { RouterProvider, createBrowserRouter } from "react-router";
 import App from './App.jsx'
-import CreateTrip from "./CreateTrip";
+import CreateTrip from "./CreateTrip/index"
 import Header from "./components/custom/Header";
 import { Toaster } from "./components/ui/toaster";
 import { GoogleOAuthProvider } from '@react-oauth/google';
@@ -12,7 +12,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 // const root = document.getElementById("root");
 const router = createBrowserRouter([
   {
-    path: 'CreateTrip',
+    path: '/CreateTrip',
     element: <CreateTrip />
   },
   {
