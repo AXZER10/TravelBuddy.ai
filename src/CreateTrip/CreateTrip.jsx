@@ -2,10 +2,11 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { ToastAction } from "@/components/ui/toast"
-import { SelectBudgetOptions, SelectNoOfPersons } from '@/constants/options';
+import { PROMPT, SelectBudgetOptions, SelectNoOfPersons } from '@/constants/options';
 import React, { useEffect, useState } from 'react'
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 import { useCustomToast } from '@/components/custom/Toast';
+import { chatSession } from '@/services/AiModel';
 
 function CreateTrip() {
     const [place, setPlace] = useState();
@@ -24,11 +25,20 @@ function CreateTrip() {
     const { toast } = useToast()
     const { showToast } = useCustomToast()
 
-    const onGenerateTrip = () => {
+    const onGenerateTrip = async () => {
         if (
-            formData?.noOfDays ||
-            formData?.location ||
-            formData?.noOfPeople ||
+            !formData?.noOfDays ||
+            !formData?.location ||
+            !formData?.noOfPeople ||
+            !formData?.budget
+        ) {
+            showToast("Please Enter all details", "Fill in the missing details.");
+            return;
+        }
+        if (
+            formData?.noOfDays &&
+            formData?.location &&
+            formData?.noOfPeople &&
             formData?.budget
         ) {
             if (formData?.noOfDays > 5) {
@@ -41,17 +51,19 @@ function CreateTrip() {
             }
             else {
                 console.log(formData)
+                const Final_Prompt = PROMPT
+                    .replace('{location}', formData?.location?.label)
+                    .replace('{noOfDays}', formData?.noOfDays)
+                    .replace('{People}', formData?.noOfPeople)
+                    .replace('{Budget}', formData?.budget)
+                    .replace('{noOfDays}', formData?.noOfDays)
+                    .replace('{Budget}', formData?.budget)
+                console.log("PROmpt", Final_Prompt)
+                const result = await chatSession.sendMessage(Final_Prompt);
+                console.log("Result", result?.response?.text())
             }
         }
-        if (
-            !formData?.noOfDays ||
-            !formData?.location ||
-            !formData?.noOfPeople ||
-            !formData?.budget
-        ) {
-            showToast("Please Enter all details", "Fill in the missing details.");
-            return;
-        }
+
     }
     return (
         <div className='sm:px-10 md:px-32 lg:px-56 xl:px-120 px-5 mt-10'>
