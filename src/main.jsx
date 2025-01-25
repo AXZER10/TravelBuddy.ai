@@ -12,13 +12,13 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 // const root = document.getElementById("root");
 const router = createBrowserRouter([
   {
+    path: 'CreateTrip',
+    element: <CreateTrip />
+  },
+  {
     path: '/',
     element: <App />
   },
-  {
-    path: '/CreateTrip',
-    element: <CreateTrip />
-  }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(

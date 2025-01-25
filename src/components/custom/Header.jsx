@@ -1,7 +1,11 @@
 import React from 'react'
 import { Button } from '../ui/button'
+import { useEffect } from 'react';
 
 function Header() {
+
+    const user = localStorage.getItem('user');
+    
     return (
         <div className='p-3 shadow-sm flex flex-row border-2 justify-between'>
             <div className='flex flex-row items-center justify-evenly '>
@@ -14,9 +18,23 @@ function Header() {
                 <Button>
                     <img src="/DarkModeIcon.png" alt="" className='h-5 rounded-3xl' />
                 </Button>
-                <Button>
-                    Sign In
-                </Button>
+                {user ?
+                    <>
+                        {/* {var parsedUser = typeof user === 'string' ? JSON.parse(user) : user;} */}
+                        <img
+                            src={JSON.parse(user).picture}
+                            alt={JSON.parse(user).name}
+                            className="h-12 w-12 rounded-full border border-gray-300"
+                            referrerPolicy="no-referrer"
+                        />
+                    </>
+                    :
+                    <Button>
+                        Sign In
+                    </Button>
+
+                }
+
             </div>
         </div>
     )
