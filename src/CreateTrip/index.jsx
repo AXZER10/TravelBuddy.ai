@@ -1,12 +1,22 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useToast } from '@/hooks/use-toast';
-import { ToastAction } from "@/components/ui/toast"
+import { FcGoogle } from "react-icons/fc";
 import { PROMPT, SelectBudgetOptions, SelectNoOfPersons } from '@/constants/options';
 import React, { useEffect, useState } from 'react'
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 import { useCustomToast } from '@/components/custom/Toast';
 import { chatSession } from '@/services/AiModel';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import { useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
+
 
 function CreateTrip() {
     const [place, setPlace] = useState();
@@ -17,15 +27,40 @@ function CreateTrip() {
             [name]: value
         })
     }
+    const [openDialogue, setOpenDialogue] = useState(false);
     // useEffect(() => {
     //     console.log(formData);
     // }, [formData])
 
     //Toast popup for errors
-    const { toast } = useToast()
+    // const { toast } = useToast()
     const { showToast } = useCustomToast()
 
+    const LogIn = useGoogleLogin({
+        onSuccess:(codeResp)=>GetUserProfile(codeResp),
+        onError:(error)=>console.log(error)
+    })
+    const GetUserProfile = async (tokenInfo) => {
+        axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?acess_token=${tokenInfo?.access_token}`,{
+            headers:{
+                Authorization:`Bearer ${tokenInfo?.access_token}`,
+                Accept:'Application/json'
+            }
+        }).then((resp) => {
+            console.log(resp);
+            localStorage.setItem('user', JSON.stringify(resp.data));
+            setOpenDialogue(false);
+            onGenerateTrip();
+        })
+    }
+
     const onGenerateTrip = async () => {
+
+        const user = localStorage.getItem('user');
+        if (!user) {
+            setOpenDialogue(true);
+        }
+
         if (
             !formData?.noOfDays ||
             !formData?.location ||
@@ -33,6 +68,7 @@ function CreateTrip() {
             !formData?.budget
         ) {
             showToast("Please Enter all details", "Fill in the missing details.");
+            console.log("showToast")
             return;
         }
         if (
@@ -128,6 +164,24 @@ function CreateTrip() {
                     Generate Trip
                 </Button>
             </div>
+            <Dialog open={openDialogue}>
+                <DialogContent>
+                    <div className='flex flex-row items-center'>
+                        <img src="/Logo.png" alt="" className='h-10 rounded-3xl' />
+                        <div className='pl-2 font-semibold text-xl text-center'>
+                            TravelBuddy.ai
+                        </div>
+                    </div>
+                    <DialogTitle>Sign In with Google</DialogTitle>
+                    <DialogDescription>
+                        Sign in to the app with Google authentication securely.
+                    </DialogDescription>
+                    <Button 
+                    onClick = {LogIn}
+                    className='w-full flex flex-row gap-2'>Sign in with Google<FcGoogle className='h-7 w-7' /></Button>
+                </DialogContent>
+            </Dialog>
+
         </div>
     )
 }
