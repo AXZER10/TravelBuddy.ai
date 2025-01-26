@@ -19,12 +19,15 @@ import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '@/services/firebaseConfig';
+import { useNavigate } from 'react-router';
 
 
 function CreateTrip() {
     const [place, setPlace] = useState();
     const [formData, setFormData] = useState([]);
     const [loading, setLoading] = useState(false);
+
+    const navigate = useNavigate();
 
     const handleInputChange = (name, value) => {
         setFormData({
@@ -98,7 +101,6 @@ function CreateTrip() {
                 console.log("Result", result?.response?.text());
                 setLoading(false)
                 await saveToDB(result?.response.text());
-
             }
         }
 
@@ -114,6 +116,7 @@ function CreateTrip() {
             id: docID
         });
         setLoading(false);
+        navigate('/viewTrip/'+docID)
     }
 
 
