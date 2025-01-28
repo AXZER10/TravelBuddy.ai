@@ -5,6 +5,8 @@ import { React, useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import InfoSection from '../components/InfoSection';
 import Hotels from '../components/Hotels';
+import PlacesToVisit from '@/viewTrip/components/PlacesToVisit';
+import Footer from '../components/Footer';
 
 function ViewTrip() {
 
@@ -34,10 +36,11 @@ function ViewTrip() {
             {/* Information Section */}
             <InfoSection tripData={trip} />
             {/* Recommended Section */}
-            <Hotels trip={trip}/>
+            <Hotels trip={trip} />
             {/* Daily Plan */}
-
+            <PlacesToVisit trip={trip}/>
             {/* Footer */}
+            <Footer />
         </div>
     )
 }

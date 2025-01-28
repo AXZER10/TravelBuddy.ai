@@ -8,6 +8,7 @@ import Header from "./components/custom/Header";
 import { Toaster } from "./components/ui/toaster";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import ViewTrip from "./viewTrip/[tripID]/index.jsx";
+import Footer from "./Footer";
 
 
 // const root = document.getElementById("root");
@@ -32,6 +33,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Header />
       <Toaster />
       <RouterProvider router={router} />
+      <Footer/>
     </GoogleOAuthProvider>
   </StrictMode>
 );
