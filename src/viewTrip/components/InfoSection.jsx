@@ -31,7 +31,7 @@ function InfoSection({ tripData }) {
         try {
             const response = await GetPlaceDetails(data);
             if (response.data.places && response.data.places.length > 0 && response.data.places[0].photos?.length > 1) {
-                const photoRef = response.data.places[0].photos[1].name;
+                const photoRef = response.data.places[0].photos[8].name;
                 const photoUrl = PHOTO_REF_URL.replace('{NAME}', photoRef);
                 setPhotoUrl(photoUrl);
             } else {
