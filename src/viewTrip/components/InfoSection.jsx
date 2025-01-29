@@ -1,12 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { GetPlaceDetails } from '@/services/GlobalApi';
+import { GetPlaceDetails, PHOTO_REF_URL } from '@/services/GlobalApi';
 import { React, useEffect, useState } from 'react'
 import { IoIosSend } from "react-icons/io";
 
 function InfoSection({ tripData }) {
-
-    const PHOTO_REF_URL = 'https://places.googleapis.com/v1/{NAME}/media?maxHeightPx=1000&&key=' + import.meta.env.VITE_GOOGLE_PLACE_API_KEY;
 
     const action = () => {
         console.log("Share Pressed")
