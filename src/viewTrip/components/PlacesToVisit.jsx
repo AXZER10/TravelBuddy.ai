@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Button } from '../../components/ui/button';
 import { TbMapSearch } from "react-icons/tb";
+import PlacesToVisitCard from './PlacesToVisitCard';
 
 function PlacesToVisit({ trip }) {
     const { tripData } = trip || {}; // Destructure tripData with fallback to avoid undefined errors
@@ -24,22 +25,7 @@ function PlacesToVisit({ trip }) {
                             {data.activities?.length > 0 ? (
                                 data.activities.map((activity, idx) => (
                                     <Link to={'https://www.google.com/maps/search/?api=1&query='+activity.placeName+','+trip?.userSelection?.location?.label} target='_blank' key={activity.placeName + idx}>
-                                        <div
-                                            className="transition-transform transform hover:scale-105 cursor-pointer mt-5 hover:shadow-xl p-2 rounded-xl"
-                                        >
-                                            <img
-                                                src={"/Placeholder.jpg"}
-                                                className="h-[130px] w-[340px] rounded-xl object-cover shadow-2xl"
-                                                alt={activity.placeName || "Placeholder"}
-                                            />
-                                            <h4 className="font-semibold mt-2">{activity.placeName}</h4>
-                                            <p className="text-gray-500 text-sm">{activity.details}</p>
-                                            <p className="text-gray-500 text-xs mt-2">💰 {activity.pricing}</p>
-                                            <p className="text-green-600 text-xs mt-2 text-center rounded-xl bg-gray-300 shadow-sm shadow-gray-500 p-1">⏰ {activity.timings}</p>
-                                        </div>
-                                        {/* <div className='flex items-center justify-end'>
-                                            <Button size='sm'><TbMapSearch className='w-2 h-2' /></Button>
-                                        </div> */}
+                                        <PlacesToVisitCard activity={activity}/>
                                     </Link>
 
                                 ))
