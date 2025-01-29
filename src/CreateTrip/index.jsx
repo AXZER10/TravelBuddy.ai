@@ -39,6 +39,11 @@ function CreateTrip() {
     const [openDialogue, setOpenDialogue] = useState(false);
     const { showToast } = useCustomToast()
 
+    // useEffect(() => {
+    //   window.location.reload();
+    // }, [])
+
+
     const LogIn = useGoogleLogin({
         onSuccess: (codeResp) => GetUserProfile(codeResp),
         onError: (error) => console.log(error)
@@ -53,6 +58,7 @@ function CreateTrip() {
             // console.log(resp);
             localStorage.setItem('user', JSON.stringify(resp.data));
             setOpenDialogue(false);
+            window.location.reload();
             onGenerateTrip();
         })
     }
@@ -211,7 +217,6 @@ function CreateTrip() {
                             className='w-full flex flex-row gap-2'>Sign in with Google<FcGoogle className='h-7 w-7' /></Button>
                     </DialogContent>
                 </Dialog>
-
             </div>
         </>
     )

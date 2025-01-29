@@ -42,7 +42,7 @@ function PlacesToVisitCard({ activity }) {
             className="transition-transform transform hover:scale-105 cursor-pointer mt-5 hover:shadow-xl p-2 rounded-xl"
         >
             <img
-                src={photoUrl}
+                src={photoUrl?photoUrl:'/Placeholder.jpg'}
                 className="h-[130px] w-[340px] rounded-xl object-cover shadow-2xl"
                 alt={activity.placeName || "Placeholder"}
             />
