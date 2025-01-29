@@ -3,6 +3,9 @@ import React from 'react'
 import { Link } from 'react-router'
 
 function Hotels({ trip }) {
+    const PHOTO_REF_URL = 'https://places.googleapis.com/v1/{NAME}/media?maxHeightPx=1000&&key=' + import.meta.env.VITE_GOOGLE_PLACE_API_KEY;
+
+
     return (
         <div className='bg-gray-200 p-5 rounded-xl'>
             <h2 className='font-bold text-xl'>Hotel Recommendations</h2>
