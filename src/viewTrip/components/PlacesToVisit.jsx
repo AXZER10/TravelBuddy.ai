@@ -21,7 +21,7 @@ function PlacesToVisit({ trip }) {
                 {Object.entries(itinerary).map(([day, data]) => (
                     <div key={day} className="mt-3">
                         <h3 className="font-semibold text-lg capitalize px-2">{day}</h3>
-                        <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 border-4 border-[#32c1c1] rounded-xl p-4 m-2'>
+                        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 border-4 border-[#32c1c1] rounded-xl p-4 m-2'>
                             {data.activities?.length > 0 ? (
                                 data.activities.map((activity, idx) => (
                                     <Link to={'https://www.google.com/maps/search/?api=1&query='+activity.placeName+','+trip?.userSelection?.location?.label} target='_blank' key={activity.placeName + idx}>

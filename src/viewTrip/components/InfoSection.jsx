@@ -55,7 +55,7 @@ function InfoSection({ tripData }) {
                     <h2 className='font-bold text-xl sm:text-2xl'>
                         {tripData.userSelection?.location?.label || "Unknown Location"}
                     </h2>
-                    <div className='gap-x-2 flex flex-wrap'>
+                    <div className='gap-x-2 flex flex-wrap gap-2'>
                         <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500 text-sm sm:text-base'>
                             📆 {tripData.userSelection?.noOfDays} {tripData.userSelection?.noOfDays == 1 ? 'day' : "days"}
                         </h2>
