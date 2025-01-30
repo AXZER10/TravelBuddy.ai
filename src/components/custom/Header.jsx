@@ -15,15 +15,9 @@ import { MdDarkMode, MdLightMode } from "react-icons/md";
 function Header() {
     const [user, setUser] = useState(null);
     const [darkMode, setDarkMode] = useState(
-        localStorage.getItem('theme') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches
+        localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : true
     );
 
-    const handleDarkModePress = () => {
-        setDarkMode(!darkMode)
-        // window.location.reload();
-    }
-
-    // Apply dark mode class to body
     useEffect(() => {
         if (darkMode) {
             document.documentElement.classList.add('dark');
@@ -34,7 +28,10 @@ function Header() {
         }
     }, [darkMode]);
 
-    // Check if user is logged in
+    const handleDarkModePress = () => {
+        setDarkMode(prev => !prev);
+    };
+
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
         if (storedUser) {
@@ -107,16 +104,16 @@ function Header() {
                 </a>
             </div>
             <div className='justify-center items-center flex gap-3'>
-                <Button variant='outline' className='rounded-full bg-[#18cccb] dark:bg-white dark:text-black' onClick={() => handleDarkModePress()}>
+                <Button variant='outline' className='rounded-full bg-[#18cccb] dark:bg-white dark:text-black' onClick={handleDarkModePress}>
                     {darkMode ?
                         <div className='flex items-center justify-center gap-1'>
                             <MdLightMode />
-                            <p className='hidden sm:hidden md:hidden lg:block'>Toggle Light Mode</p> {/* Hide on smaller screens */}
+                            <p className='hidden sm:hidden md:hidden lg:block'>Toggle Light Mode</p>
                         </div>
                         :
                         <div className='flex items-center justify-center gap-1'>
                             <MdDarkMode />
-                            <p className='hidden sm:block'>Toggle Light Mode</p> {/* Hide on smaller screens */}
+                            <p className='hidden sm:block'>Toggle Dark Mode</p>
                         </div>
                     }
                 </Button>
