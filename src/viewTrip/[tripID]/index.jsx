@@ -34,25 +34,16 @@ function ViewTrip() {
 
 
     return (
-        <>
-            <div className='flex items-center justify-end m-2 p-2'>
-                <Link to={'/'}>
-                    <Button>
-                        <IoIosHome className='h-5 rounded-3xl' />
-                    </Button>
-                </Link>
-            </div>
-            <div className='p-10 md:px-20 lg:px-44 xl:px-56'>
-                {/* Information Section */}
-                <InfoSection tripData={trip} />
-                {/* Recommended Section */}
-                <Hotels trip={trip} />
-                {/* Daily Plan */}
-                <PlacesToVisit trip={trip} />
-                {/* Footer */}
-                <Footer />
-            </div>
-        </>
+        <div className='p-10 md:px-20 lg:px-44 xl:px-56'>
+            {/* Information Section */}
+            <InfoSection tripData={trip} />
+            {/* Recommended Section */}
+            <Hotels trip={trip} />
+            {/* Daily Plan */}
+            <PlacesToVisit trip={trip} />
+            {/* Footer */}
+            <Footer />
+        </div>
     )
 }
 
