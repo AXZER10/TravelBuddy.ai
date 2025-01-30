@@ -39,7 +39,7 @@ function PlacesToVisitCard({ activity }) {
 
     return (
         <div
-            className="transition-transform transform hover:scale-105 cursor-pointer mt-5 hover:shadow-xl p-2 rounded-xl"
+            className="rounded-xl overflow-hidden p-4 cursor-pointer transition-transform transform hover:scale-105 hover:shadow-xl"
         >
             <img
                 src={photoUrl?photoUrl:'/Placeholder.jpg'}

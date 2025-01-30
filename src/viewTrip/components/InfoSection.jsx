@@ -44,7 +44,7 @@ function InfoSection({ tripData }) {
 
     return (
         <div>
-            <img src={photoUrl?photoUrl:'/Logo.png'} className='h-[340px] rounded-xl w-full object-cover' />
+            <img src={photoUrl ? photoUrl : '/Logo.png'} className='h-[340px] rounded-xl w-full object-cover' />
             <div className='flex flex-row items-center justify-between'>
                 <div className='my-5 flex flex-col gap-2'>
                     <h2 className='font-bold text-2xl'>
