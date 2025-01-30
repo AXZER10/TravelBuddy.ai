@@ -10,10 +10,29 @@ import { db } from '@/services/firebaseConfig';
 import { IoIosHome } from 'react-icons/io';
 import { FaPlus } from 'react-icons/fa';
 import { IoAirplane } from "react-icons/io5";
-import { MdDarkMode } from "react-icons/md";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 function Header() {
     const [user, setUser] = useState(null);
+    const [darkMode, setDarkMode] = useState(
+        localStorage.getItem('theme') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches
+    );
+
+    const handleDarkModePress = () => {
+        setDarkMode(!darkMode)
+        window.location.reload();
+    }
+
+    // Apply dark mode class to body
+    useEffect(() => {
+        if (darkMode) {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        }
+    }, [darkMode]);
 
     // Check if user is logged in
     useEffect(() => {
@@ -52,7 +71,7 @@ function Header() {
         if (!userData) return;
 
         try {
-            const userRef = doc(db, "users", userData.id); // Use Google ID as Firestore doc ID
+            const userRef = doc(db, "users", userData.id);
             const docSnap = await getDoc(userRef);
 
             if (!docSnap.exists()) {
@@ -78,37 +97,47 @@ function Header() {
     };
 
     return (
-        <div className='p-3 shadow-sm flex flex-row border-2 justify-between'>
+        <div className='p-3 shadow-sm flex flex-row border-2 justify-between bg-white dark:bg-[#035b62] dark:border-gray-700'>
             <div className='flex flex-row items-center justify-evenly'>
                 <img src="/Logo.png" alt="Logo" className='h-10 rounded-3xl' />
                 <a href="/">
-                    <div className='pl-2 font-black text-gray-500 text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center hidden sm:block'>
+                    <div className='pl-2 font-black text-gray-500 dark:text-white text-[10px] md:text-[20px] lg:text-4xl text-center hidden sm:block'>
                         TravelBuddy.ai
                     </div>
                 </a>
             </div>
             <div className='justify-center items-center flex gap-3'>
-                <Button variant='outline' className='rounded-full'>
-                    <MdDarkMode />
+                <Button variant='outline' className='rounded-full bg-[#18cccb] dark:bg-white dark:text-black' onClick={() => handleDarkModePress()}>
+                    {darkMode ?
+                        <div className='flex items-center justify-center gap-1'>
+                            <MdLightMode />
+                            <p className='hidden sm:hidden md:hidden lg:block'>Toggle Light Mode</p> {/* Hide on smaller screens */}
+                        </div>
+                        :
+                        <div className='flex items-center justify-center gap-1'>
+                            <MdDarkMode />
+                            <p className='hidden sm:block'>Toggle Light Mode</p> {/* Hide on smaller screens */}
+                        </div>
+                    }
                 </Button>
                 <a href="/">
-                    <Button variant='outline' className='rounded-full font-bold h-10'>
+                    <Button variant='outline' className='rounded-full bg-[#18cccb] dark:bg-white dark:text-black h-10'>
                         <IoIosHome size={50} className='rounded-3xl' />
-                        <span className='hidden sm:block'>Home</span> {/* Hide on small screens */}
+                        <span className='hidden sm:block'>Home</span>
                     </Button>
                 </a>
                 <a href="/CreateTrip">
-                    <Button variant='outline' className='rounded-full font-bold'>
+                    <Button variant='outline' className='rounded-full font-bold bg-[#18cccb] dark:bg-white dark:text-black'>
                         <FaPlus size={50} className='cursor-pointer rounded-full' />
-                        <span className='hidden sm:block'>Create Trips</span> {/* Hide on small screens */}
+                        <span className='hidden sm:block'>Create Trips</span>
                     </Button>
                 </a>
                 {user ? (
                     <div className='flex gap-3 items-center'>
                         <a href="/my-trips">
-                            <Button variant='outline' className='rounded-full font-bold'>
+                            <Button variant='outline' className='rounded-full font-bold bg-[#18cccb] dark:bg-white dark:text-black'>
                                 <IoAirplane />
-                                <span className='hidden sm:block'>My trips</span> {/* Hide on small screens */}
+                                <span className='hidden sm:block'>My trips</span>
                             </Button>
                         </a>
                         <Popover>
@@ -121,9 +150,9 @@ function Header() {
                                 />
                             </PopoverTrigger>
                             <PopoverContent className='w-32'>
-                                <div className='flex items-center justify-center gap-2 cursor-pointer hover:bg-gray-200 p-2 rounded-md' onClick={handleLogout}>
+                                <div className='flex items-center justify-center gap-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 p-2 rounded-md' onClick={handleLogout}>
                                     <PiSignOutFill />
-                                    <span className='hidden sm:block'>Logout</span> {/* Hide on small screens */}
+                                    <span className='hidden sm:block'>Logout</span>
                                 </div>
                             </PopoverContent>
                         </Popover>

@@ -28,6 +28,9 @@ function CreateTrip() {
     const [openDialogue, setOpenDialogue] = useState(false);
     const { showToast } = useCustomToast();
     const navigate = useNavigate();
+    const [darkMode, setDarkMode] = useState(
+        localStorage.getItem('theme') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches
+    );
 
     const handleInputChange = (name, value) => {
         setFormData({
@@ -112,12 +115,12 @@ function CreateTrip() {
     };
 
     return (
-        <div className='sm:px-5 md:px-10 lg:px-32 xl:px-56 px-5 mt-10'>
-            <h2 className='font-bold text-2xl sm:text-3xl'>Tell us your Travel Preferences</h2>
+        <div className='sm:px-5 md:px-10 lg:px-32 xl:px-56 px-5 mt-10 dark:bg-gray-800'>
+            <h2 className='font-bold text-2xl sm:text-3xl text-[#32c1c1]'>Tell us your Travel Preferences</h2>
             <p className='mt-3 text-gray-500 text-base sm:text-lg'>Just provide some basic information, and our trip planner will generate a customized itinerary based on your preferences.</p>
-            <div className='mt-10 sm:mt-20 flex flex-col gap-8 sm:gap-10'>
+            <div className='mt-3 sm:mt-10 flex flex-col gap-8 sm:gap-10'>
                 <div>
-                    <h2 className='text-lg sm:text-xl font-medium my-3'>What is the destination of your choice?</h2>
+                    <h2 className='text-lg sm:text-xl font-medium my-3 text-[#32c1c1]'>What is the destination of your choice?</h2>
                     <GooglePlacesAutocomplete
                         apiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY}
                         selectProps={{
@@ -125,6 +128,43 @@ function CreateTrip() {
                             onChange: (v) => {
                                 setPlace(v);
                                 handleInputChange('location', v);
+                            },
+                            styles: {
+                                control: (provided, state) => ({
+                                    ...provided,
+                                    backgroundColor: darkMode ? '#000' : '#fff', // Black in dark mode, white in light mode
+                                    borderColor: state.isFocused ? '#32c1c1' : darkMode ? '#555' : '#ccc',
+                                    color: darkMode ? '#fff' : '#333',
+                                    boxShadow: state.isFocused ? '0 0 5px rgba(50, 193, 193, 0.5)' : 'none',
+                                    '&:hover': {
+                                        borderColor: '#32c1c1',
+                                    }
+                                }),
+                                input: (provided) => ({
+                                    ...provided,
+                                    color: darkMode ? '#fff' : '#333', // White text in dark mode
+                                }),
+                                singleValue: (provided) => ({
+                                    ...provided,
+                                    color: darkMode ? '#fff' : '#333', // Selected value text color
+                                }),
+                                menu: (provided) => ({
+                                    ...provided,
+                                    backgroundColor: darkMode ? '#000' : '#fff', // Dropdown background black in dark mode
+                                    borderRadius: '8px',
+                                    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+                                }),
+                                option: (provided, state) => ({
+                                    ...provided,
+                                    backgroundColor: state.isSelected
+                                        ? '#32c1c1'
+                                        : state.isFocused
+                                            ? darkMode ? '#333' : '#e0f7fa'
+                                            : darkMode ? '#000' : '#fff',
+                                    color: state.isSelected ? '#fff' : darkMode ? '#fff' : '#333',
+                                    padding: '10px',
+                                    cursor: 'pointer',
+                                }),
                             }
                         }}
                     />
@@ -142,7 +182,7 @@ function CreateTrip() {
                         {SelectBudgetOptions.map((item, index) => (
                             <div key={index}
                                 onClick={() => handleInputChange('budget', item.title)}
-                                className={`p-4 border rounded-lg hover:shadow-lg hover:border-[#32c1c1] cursor-pointer ${formData?.budget == item.title && 'shadow-lg shadow-[#32c1c1] border-[#32c1c1]'}`}>
+                                className={`p-4 border border-slate-300 shadow-lg rounded-lg hover:shadow-lg hover:border-[#32c1c1] cursor-pointer ${formData?.budget == item.title && 'shadow-lg shadow-[#32c1c1] border-[#32c1c1]'}`}>
                                 <h2 className='text-3xl sm:text-4xl'>{item.icon}</h2>
                                 <h2 className='font-bold text-lg'>{item.title}</h2>
                                 <h2 className='text-sm text-gray-500'>{item.desc}</h2>
@@ -156,7 +196,7 @@ function CreateTrip() {
                         {SelectNoOfPersons.map((item, index) => (
                             <div key={index}
                                 onClick={() => handleInputChange('noOfPeople', item.no)}
-                                className={`p-4 border rounded-lg hover:shadow-lg hover:border-[#32c1c1] cursor-pointer ${formData?.noOfPeople == item.no && 'shadow-lg shadow-[#32c1c1]'}`}>
+                                className={`p-4 border border-slate-300 shadow-lg rounded-lg hover:shadow-lg hover:border-[#32c1c1] cursor-pointer ${formData?.noOfPeople == item.no && 'shadow-lg shadow-[#32c1c1]'}`}>
                                 <h2 className='text-3xl sm:text-4xl'>{item.icon}</h2>
                                 <h2 className='font-bold text-lg'>{item.title}</h2>
                                 <h2 className='text-sm text-gray-500'>{item.desc}</h2>

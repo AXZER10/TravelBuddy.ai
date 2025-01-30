@@ -2,7 +2,7 @@
 import { db } from '@/services/firebaseConfig';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigation } from 'react-router';
+import { Link } from 'react-router';
 import UserTripCard from './components/UserTripCard';
 import { FaPlus } from "react-icons/fa";
 
@@ -18,26 +18,32 @@ function MyTrips() {
     }, [])
 
     const getUserTrips = async () => {
-        setLoading(true)
+        setLoading(true);
         const user = JSON.parse(localStorage.getItem('user'));
         const q = query(collection(db, 'AITrips'), where('userEmail', '==', user?.email));
         const querySnapshot = await getDocs(q);
         setUserTrips([]); // Clear previous trips
         const trips = querySnapshot.docs.map(doc => doc.data()); // Collect trips in an array
         setUserTrips(trips); // Update state only once
-        setLoading(false)
+
+        // Add a timer to simulate a delay
+        setTimeout(() => {
+            setLoading(false); // Set loading to false after 1 second delay
+        }, 2000); // 1000ms = 1 second
+
         console.log(userTrips)
     };
+
     return (
         <div className='sm:px-10 md:px-32 lg:px-56 xl:px-120 px-5 mt-10 h-full pb-20 flex flex-col'>
             <h2 className='font-bold text-3xl'>My Trips</h2>
-    
+
             {loading ? (
                 <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5 mt-5'>
                     {[1, 2, 3, 4, 5, 6].map((item, index) => (
                         <div
                             key={index}
-                            className='h-[250px] w-full bg-slate-200 animate-pulse rounded-xl'
+                            className='h-[250px] w-[310px] bg-slate-200 animate-pulse rounded-xl'
                         />
                     ))}
                 </div>

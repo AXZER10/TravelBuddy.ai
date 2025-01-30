@@ -24,11 +24,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/viewTrip/:tripID',
-    element: <ViewTrip/>
+    element: <ViewTrip />
   },
   {
     path: '/my-trips',
-    element: <MyTrips/>
+    element: <MyTrips />
   },
 ])
 
@@ -37,8 +37,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_AUTH_CLIENT_ID}>
       <Header />
       <Toaster />
-      <RouterProvider router={router} />
-      <Footer/>
+      <div className="flex flex-col justify-between items-center h-full dark:bg-gray-800">
+        <RouterProvider router={router} />
+        <Footer />
+      </div>
     </GoogleOAuthProvider>
   </StrictMode>
 );

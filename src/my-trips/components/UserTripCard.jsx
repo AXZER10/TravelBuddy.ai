@@ -45,7 +45,7 @@ function UserTripCard({ trip }) {
                 <img
                     src={photoUrl || "/Placeholder.jpg"}
                     alt={trip?.userSelection?.location?.label || "Trip Image"}
-                    className="w-full h-40 object-cover rounded-lg"
+                    className="w-80 h-40 object-cover rounded-lg"
                 />
                 <div className="mt-3">
                     {/* Display Trip Title */}

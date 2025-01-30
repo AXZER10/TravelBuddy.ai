@@ -6,12 +6,12 @@ function Hero() {
     return (
         <div className='flex flex-col items-center px-4 sm:px-8 lg:px-56 gap-9 justify-center mb-16 sm:mb-24'>
             {/* Site Name */}
-            <div className='text-2xl sm:text-3xl font-bold text-center text-gray-800'>
+            <div className='font-extrabold text-[30px] sm:text-[40px] md:text-[50px] text-center flex flex-col items-center justify-center mt-10'>
+                <img src="/Logo.png" className='rounded-3xl h-40 w-40' />
                 TravelBuddy.ai
             </div>
-            
             {/* Hero Title and Description */}
-            <h1 className='font-extrabold text-[30px] sm:text-[40px] md:text-[50px] text-center mt-6'>
+            <h1 className='font-extrabold text-[30px] sm:text-[40px] md:text-[50px] text-center'>
                 <span className='text-[#32c1c1]'>Discover Your Next Adventure with AI:</span>
                 <br />
                 Personalized Itineraries at Your Fingertips
@@ -20,7 +20,7 @@ function Hero() {
                 Your personal trip planner and travel curator, creating custom itineraries tailored to your interests and budget.
             </p>
             <Link to={'/CreateTrip'}>
-                <Button className='mt-6 px-6 py-3 sm:px-8 sm:py-4'>Get Started</Button>
+                <Button className='mt-6 px-6 py-3 sm:px-8 sm:py-4 bg-[#32c1c1]'>Get Started</Button>
             </Link>
         </div>
     )
