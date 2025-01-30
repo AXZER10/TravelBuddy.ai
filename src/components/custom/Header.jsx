@@ -12,7 +12,6 @@ import { FaPlus } from 'react-icons/fa';
 import { IoAirplane } from "react-icons/io5";
 import { MdDarkMode } from "react-icons/md";
 
-
 function Header() {
     const [user, setUser] = useState(null);
 
@@ -80,10 +79,10 @@ function Header() {
 
     return (
         <div className='p-3 shadow-sm flex flex-row border-2 justify-between'>
-            <div className='flex flex-row items-center justify-evenly '>
+            <div className='flex flex-row items-center justify-evenly'>
                 <img src="/Logo.png" alt="Logo" className='h-10 rounded-3xl' />
                 <a href="/">
-                    <div className='pl-2 font-black text-gray-500 text-xl text-center'>
+                    <div className='pl-2 font-black text-gray-500 text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center hidden sm:block'>
                         TravelBuddy.ai
                     </div>
                 </a>

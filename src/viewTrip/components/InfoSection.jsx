@@ -8,6 +8,7 @@ function InfoSection({ tripData }) {
 
     const action = () => {
         console.log("Share Pressed")
+        console.log(tripData?.tripData)
     }
 
     useEffect(() => {
@@ -43,25 +44,36 @@ function InfoSection({ tripData }) {
     };
 
     return (
-        <div>
-            <img src={photoUrl ? photoUrl : '/Logo.png'} className='h-[340px] rounded-xl w-full object-cover' />
-            <div className='flex flex-row items-center justify-between'>
-                <div className='my-5 flex flex-col gap-2'>
-                    <h2 className='font-bold text-2xl'>
+        <div className="p-4 sm:p-6">
+            <img 
+                src={photoUrl ? photoUrl : '/Logo.png'} 
+                className='w-full h-[250px] sm:h-[340px] rounded-xl object-cover'
+                alt="Destination"
+            />
+            <div className='flex flex-col sm:flex-row items-start sm:items-center justify-between mt-5'>
+                <div className='my-3 sm:my-5 flex flex-col gap-2'>
+                    <h2 className='font-bold text-xl sm:text-2xl'>
                         {tripData.userSelection?.location?.label || "Unknown Location"}
                     </h2>
-                    <div className='gap-x-2 flex'>
-                        <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500'>📆 {tripData.userSelection?.noOfDays} {tripData.userSelection?.noOfDays == 1 ? 'day' : "days"}</h2>
-                        <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500'>💸 {tripData.userSelection?.budget} Budget</h2>
-                        <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500'>🤵🏻‍♂️ No. of people: {tripData.userSelection?.noOfPeople}</h2>
+                    <div className='gap-x-2 flex flex-wrap'>
+                        <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500 text-sm sm:text-base'>
+                            📆 {tripData.userSelection?.noOfDays} {tripData.userSelection?.noOfDays == 1 ? 'day' : "days"}
+                        </h2>
+                        <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500 text-sm sm:text-base'>
+                            💸 {tripData.userSelection?.budget} Budget
+                        </h2>
+                        <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500 text-sm sm:text-base'>
+                            🤵🏻‍♂️ No. of people: {tripData.userSelection?.noOfPeople}
+                        </h2>
                     </div>
                 </div>
                 <IoIosSend
                     onClick={action}
-                    className='justify-center items-center w-10 h-10 border border-black bg-[#32c1c1] rounded-xl p-0.5 mx-2' />
+                    className='mt-3 sm:mt-0 justify-center items-center w-10 h-10 border border-black bg-[#32c1c1] rounded-xl p-0.5 mx-2 cursor-pointer'
+                />
             </div>
         </div>
     )
 }
 
-export default InfoSection
+export default InfoSection;
