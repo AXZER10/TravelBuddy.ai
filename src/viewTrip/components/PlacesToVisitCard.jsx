@@ -39,7 +39,7 @@ function PlacesToVisitCard({ activity }) {
 
     return (
         <div
-            className="rounded-xl overflow-hidden cursor-pointer transition-transform transform hover:scale-105 hover:shadow-xl hover:shadow-gray-700 gap-2 mt-5 h-80 flex flex-col justify-between"
+            className="rounded-xl overflow-hidden cursor-pointer transition-transform transform hover:scale-105 hover:shadow-xl hover:shadow-gray-700 gap-2 mt-5 flex flex-col justify-between"
         >
             <div>
                 <img
