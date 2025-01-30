@@ -93,15 +93,24 @@ function Header() {
                     <MdDarkMode />
                 </Button>
                 <a href="/">
-                    <Button variant='outline' className='rounded-full font-bold h-10'><IoIosHome size={50} className='rounded-3xl' />Home</Button>
+                    <Button variant='outline' className='rounded-full font-bold h-10'>
+                        <IoIosHome size={50} className='rounded-3xl' />
+                        <span className='hidden sm:block'>Home</span> {/* Hide on small screens */}
+                    </Button>
                 </a>
                 <a href="/CreateTrip">
-                    <Button variant='outline' className='rounded-full font-bold'><FaPlus size={50} className='cursor-pointer rounded-full' />Create Trips</Button>
+                    <Button variant='outline' className='rounded-full font-bold'>
+                        <FaPlus size={50} className='cursor-pointer rounded-full' />
+                        <span className='hidden sm:block'>Create Trips</span> {/* Hide on small screens */}
+                    </Button>
                 </a>
                 {user ? (
                     <div className='flex gap-3 items-center'>
                         <a href="/my-trips">
-                            <Button variant='outline' className='rounded-full font-bold'><IoAirplane />My trips</Button>
+                            <Button variant='outline' className='rounded-full font-bold'>
+                                <IoAirplane />
+                                <span className='hidden sm:block'>My trips</span> {/* Hide on small screens */}
+                            </Button>
                         </a>
                         <Popover>
                             <PopoverTrigger>
@@ -115,7 +124,7 @@ function Header() {
                             <PopoverContent className='w-32'>
                                 <div className='flex items-center justify-center gap-2 cursor-pointer hover:bg-gray-200 p-2 rounded-md' onClick={handleLogout}>
                                     <PiSignOutFill />
-                                    <h2>Logout</h2>
+                                    <span className='hidden sm:block'>Logout</span> {/* Hide on small screens */}
                                 </div>
                             </PopoverContent>
                         </Popover>
