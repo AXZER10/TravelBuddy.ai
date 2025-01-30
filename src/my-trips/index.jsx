@@ -29,7 +29,7 @@ function MyTrips() {
         // Add a timer to simulate a delay
         setTimeout(() => {
             setLoading(false); // Set loading to false after 1 second delay
-        }, 2000); // 1000ms = 1 second
+        }, 1000); // 1000ms = 1 second
 
         console.log(userTrips)
     };

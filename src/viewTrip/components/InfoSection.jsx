@@ -44,15 +44,15 @@ function InfoSection({ tripData }) {
     };
 
     return (
-        <div className="p-4 sm:p-6">
+        <div className="">
             <img 
                 src={photoUrl ? photoUrl : '/Logo.png'} 
                 className='w-full h-[250px] sm:h-[340px] rounded-xl object-cover'
                 alt="Destination"
             />
             <div className='flex flex-col sm:flex-row items-start sm:items-center justify-between mt-5'>
-                <div className='my-3 sm:my-5 flex flex-col gap-2'>
-                    <h2 className='font-bold text-xl sm:text-2xl'>
+                <div className='sm:my-5 flex flex-col gap-2'>
+                    <h2 className='font-bold text-xl sm:text-2xl dark:text-[#32c1c1]'>
                         {tripData.userSelection?.location?.label || "Unknown Location"}
                     </h2>
                     <div className='gap-x-2 flex flex-wrap gap-2'>

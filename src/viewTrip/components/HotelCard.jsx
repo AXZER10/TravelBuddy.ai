@@ -41,10 +41,10 @@ function HotelCard({ hotel }) {
         <div className='hover:scale-105 transition-all cursor-pointer hover:shadow-xl p-2 rounded-xl'>
             <img src={photoUrl?photoUrl:'/Placeholder.jpg'} className='h-[340px] rounded-xl w-full object-cover shadow-2xl' />
             <div className='my-2 flex gap-2 flex-col'>
-                <h2 className='font-semibold'>{hotel?.hotelName}</h2>
-                <h2 className='font-medium text-gray-500 text-xs'>📍 {hotel?.address}</h2>
-                <h2 className='font-medium text-gray-500 text-xs'>{hotel?.price}</h2>
-                <h2 className='font-medium text-gray-500 text-xs'>{hotel.rating}★</h2>
+                <h2 className='font-semibold dark:text-black'>{hotel?.hotelName}</h2>
+                <h2 className='text-gray-800 text-sm mt-1'>📍 {hotel?.address}</h2>
+                <h2 className='text-gray-800 text-sm mt-1'>{hotel?.price}</h2>
+                <h2 className='text-gray-800 text-sm mt-1'>{hotel.rating}★</h2>
             </div>
         </div>
     )

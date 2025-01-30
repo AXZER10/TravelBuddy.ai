@@ -15,17 +15,17 @@ function PlacesToVisit({ trip }) {
     }
 
     return (
-        <div className='p-5 bg-gray-200 mt-5 rounded-xl'>
-            <h2 className="font-bold text-xl">Places to Visit</h2>
+        <div className='p-5 bg-gray-200 mt-5 rounded-xl dark:bg-gray-500'>
+            <h2 className='font-bold text-xl sm:text-2xl dark:text-black'>Places to Visit</h2>
             <div className="mt-4">
                 {Object.entries(itinerary).map(([day, data]) => (
                     <div key={day} className="mt-3">
-                        <h3 className="font-semibold text-lg capitalize px-2">{day}</h3>
-                        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 border-4 border-[#32c1c1] rounded-xl p-4 m-2'>
+                        <h3 className="font-semibold text-lg capitalize dark:text-black">{day}</h3>
+                        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 rounded-xl'>
                             {data.activities?.length > 0 ? (
                                 data.activities.map((activity, idx) => (
-                                    <Link to={'https://www.google.com/maps/search/?api=1&query='+activity.placeName+','+trip?.userSelection?.location?.label} target='_blank' key={activity.placeName + idx}>
-                                        <PlacesToVisitCard activity={activity}/>
+                                    <Link to={'https://www.google.com/maps/search/?api=1&query=' + activity.placeName + ',' + trip?.userSelection?.location?.label} target='_blank' key={activity.placeName + idx}>
+                                        <PlacesToVisitCard activity={activity} />
                                     </Link>
 
                                 ))

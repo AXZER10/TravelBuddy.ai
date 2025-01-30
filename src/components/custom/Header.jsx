@@ -20,7 +20,7 @@ function Header() {
 
     const handleDarkModePress = () => {
         setDarkMode(!darkMode)
-        window.location.reload();
+        // window.location.reload();
     }
 
     // Apply dark mode class to body
