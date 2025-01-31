@@ -8,6 +8,12 @@ AI Travel Planner is an intelligent travel companion that curates personalized i
 
 ---
 
+## 🌎 Live Demo  
+
+🔗 **[Try it out here!](https://travelbuddyai.netlify.app)**  
+
+---
+
 ## 🚀 Features  
 
 ✅ **Beautiful UI** – Sleek, modern, and responsive design for an effortless travel planning experience.  
@@ -63,12 +69,6 @@ cd ai-travel-planner
 npm install
 npm run dev
 ```
-
----
-
-## 🌎 Live Demo  
-
-🔗 **[Try it out here!](https://travelbuddyai.netlify.app)**  
 
 ---
 
