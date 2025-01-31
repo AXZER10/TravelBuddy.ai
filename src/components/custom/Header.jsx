@@ -96,43 +96,47 @@ function Header() {
     return (
         <div className='p-3 shadow-sm flex flex-row border-2 justify-between bg-white dark:bg-[#035b62] dark:border-gray-700'>
             <div className='flex flex-row items-center justify-evenly'>
-                <img src="/Logo.png" alt="Logo" className='h-10 rounded-3xl' />
+                <img src="/Logo.png" alt="Logo" className='h-12 rounded-3xl' />
                 <a href="/">
                     <div className='pl-2 font-black text-gray-500 dark:text-white text-[10px] md:text-[20px] lg:text-4xl text-center hidden sm:block'>
                         TravelBuddy.ai
                     </div>
                 </a>
             </div>
-            <div className='justify-center items-center flex gap-3'>
-                <Button variant='outline' className='rounded-full bg-[#18cccb] dark:bg-white dark:text-black' onClick={handleDarkModePress}>
-                    {darkMode ?
+            <div className='justify-center items-center flex gap-1 sm:gap-1 md:gap-2 lg:gap-3 xl:gap-4'>
+                {darkMode ?
+                    <Button variant='outline' className='rounded-full bg-black border-2 text-white hover:bg-white hover:text-black h-12' onClick={handleDarkModePress}>
                         <div className='flex items-center justify-center gap-1'>
                             <MdLightMode />
                             <p className='hidden sm:hidden md:hidden lg:block'>Toggle Light Mode</p>
                         </div>
-                        :
+                    </Button>
+
+                    :
+                    <Button variant='outline' className='rounded-full bg-white border-black border-2 hover:bg-black hover:text-white h-12' onClick={handleDarkModePress}>
+
                         <div className='flex items-center justify-center gap-1'>
                             <MdDarkMode />
-                            <p className='hidden sm:block'>Toggle Dark Mode</p>
+                            <p className='hidden sm:hidden md:hidden lg:block hover:text-white'>Toggle Dark Mode</p>
                         </div>
-                    }
-                </Button>
+                    </Button>
+                }
                 <a href="/">
-                    <Button variant='outline' className='rounded-full bg-[#18cccb] dark:bg-white dark:text-black h-10'>
-                        <IoIosHome size={50} className='rounded-3xl' />
+                    <Button variant='outline' className='rounded-full font-bold border-2 bg-[#18cccb] dark:bg-[#0f5e5e] dark:border-white dark:text-white dark:hover:bg-[#18cccb] dark:hover:text-black h-12'>
+                        <IoIosHome size={50} className='rounded-full' />
                         <span className='hidden sm:block'>Home</span>
                     </Button>
                 </a>
                 <a href="/CreateTrip">
-                    <Button variant='outline' className='rounded-full font-bold bg-[#18cccb] dark:bg-white dark:text-black'>
-                        <FaPlus size={50} className='cursor-pointer rounded-full' />
+                    <Button variant='outline' className='rounded-full font-bold border-2 bg-[#18cccb] dark:bg-[#0f5e5e] dark:border-white dark:text-white dark:hover:bg-[#18cccb] dark:hover:text-black h-12'>
+                        <FaPlus size={50} className='rounded-full' />
                         <span className='hidden sm:block'>Create Trips</span>
                     </Button>
                 </a>
                 {user ? (
-                    <div className='flex gap-3 items-center'>
+                    <div className='flex gap-1 items-center sm:gap-1 md:gap-2 lg:gap-3 xl:gap-4'>
                         <a href="/my-trips">
-                            <Button variant='outline' className='rounded-full font-bold bg-[#18cccb] dark:bg-white dark:text-black'>
+                            <Button variant='outline' className='rounded-full font-bold border-2 bg-[#18cccb] dark:bg-[#0f5e5e] dark:border-white dark:text-white dark:hover:bg-[#18cccb] dark:hover:text-black h-12'>
                                 <IoAirplane />
                                 <span className='hidden sm:block'>My trips</span>
                             </Button>
@@ -142,7 +146,7 @@ function Header() {
                                 <img
                                     src={user.picture}
                                     alt={user.name}
-                                    className="h-12 w-12 rounded-full border border-gray-300 cursor-pointer"
+                                    className="h-12 w-12 rounded-full border-2 border-white cursor-pointer"
                                     referrerPolicy="no-referrer"
                                 />
                             </PopoverTrigger>
