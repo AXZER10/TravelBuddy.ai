@@ -70,8 +70,8 @@ function CreateTrip() {
         }
 
         if (formData?.noOfDays && formData?.location && formData?.noOfPeople && formData?.budget) {
-            if (formData?.noOfDays > 5) {
-                showToast("Invalid number of days", "The number of days should be less than 5");
+            if (formData?.noOfDays > 7) {
+                showToast("Invalid number of days", "The number of days should be less than 7");
                 return;
             } else if (formData?.noOfDays < 1) {
                 showToast("Invalid number of days", "The number of days should be more than 0");
