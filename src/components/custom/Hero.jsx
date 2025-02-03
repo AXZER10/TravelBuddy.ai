@@ -1,10 +1,12 @@
 import React from 'react'
 import { Button } from '../ui/button'
 import { Link } from 'react-router'
+import RotatingText from '@/jsrepo/TextAnimations/RotatingText/RotatingText'
+
 
 function Hero() {
     return (
-        <div 
+        <div
             className="relative flex flex-col items-center px-4 sm:px-8 lg:px-56 gap-9 justify-center mb-16 sm:mb-24 
             dark:bg-[url('/WorldMap2.png')] bg-[url('/WorldMapLight.png')] bg-cover bg-center bg-no-repeat w-full h-screen"
         >
@@ -17,9 +19,23 @@ function Hero() {
                 <p className='font-extrabold text-[30px] sm:text-[40px] md:text-[50px]'>
                     TravelBuddy.ai
                 </p>
-                <p className='text-base font-semibold sm:text-lg lg:text-xl text-gray-400 text-center'>
-                    Plan Smarter, Travel Better.
-                </p>
+                <div className='flex items-center justify-center gap-1'>
+                    <p className='text-2xl font-semibold sm:text-2xl lg:text-2xl text-gray-400 text-center'>
+                        Plan 
+                    </p>
+                    <RotatingText
+                        texts={['Smarter!', 'Better!']}
+                        mainClassName="p-1 text-2xl font-semibold sm:text-2xl lg:text-2xl text-gray-400 overflow-hidden justify-center rounded-lg"
+                        staggerFrom={"last"}
+                        initial={{ y: "100%" }}
+                        animate={{ y: 0 }}
+                        exit={{ y: "-120%" }}
+                        staggerDuration={0.025}
+                        splitLevelClassName="overflow-hidden"
+                        transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                        rotationInterval={2000}
+                    />
+                </div>
             </div>
 
             {/* Hero Title and Description */}
