@@ -39,7 +39,6 @@ function PlacesToVisitCard({ activity }) {
     };
 
     return (
-        <SectionWrapper>
             <div
                 className="rounded-xl overflow-hidden cursor-pointer transition-transform transform hover:scale-105 hover:shadow-xl hover:shadow-gray-700 gap-2 mt-5 flex flex-col justify-between"
             >
@@ -57,7 +56,6 @@ function PlacesToVisitCard({ activity }) {
                     <p className="text-green-600 text-xs mt-2 m-2 text-center rounded-xl bg-gray-300 shadow-sm shadow-gray-500 p-1">⏰ {activity.timings}</p>
                 </div>
             </div>
-        </SectionWrapper>
     )
 }
 
