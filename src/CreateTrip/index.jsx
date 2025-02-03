@@ -190,7 +190,7 @@ function CreateTrip() {
                                 className={`p-4 border backdrop-blur-md border-slate-300 shadow-lg rounded-lg hover:shadow-lg hover:border-[#32c1c1] cursor-pointer ${formData?.budget == item.title && 'hover:shadow-[#32c1c179] shadow-[#32c1c179] backdrop-blur-3xl '}`}>
                                 <h2 className='text-3xl sm:text-4xl'>{item.icon}</h2>
                                 <h2 className='font-bold text-lg'>{item.title}</h2>
-                                <h2 className='text-sm text-gray-300'>{item.desc}</h2>
+                                <h2 className='text-sm text-gray-500 dark:text-gray-300'>{item.desc}</h2>
                             </div>
                         ))}
                     </div>
@@ -204,8 +204,8 @@ function CreateTrip() {
                                 className={`p-4 border backdrop-blur-xl border-slate-300 shadow-lg rounded-lg hover:shadow-lg hover:border-[#32c1c1] cursor-pointer ${formData?.noOfPeople == item.no && 'hover:shadow-[#32c1c179] shadow-[#32c1c179] backdrop-blur-3xl'}`}>
                                 <h2 className='text-3xl sm:text-4xl'>{item.icon}</h2>
                                 <h2 className='font-bold text-lg'>{item.title}</h2>
-                                <h2 className='text-sm text-gray-300'>{item.desc}</h2>
-                                <h2 className='text-sm text-gray-300'>{item.no}</h2>
+                                <h2 className='text-sm text-gray-500 dark:text-gray-300'>{item.desc}</h2>
+                                <h2 className='text-sm text-gray-500 dark:text-gray-300'>{item.no}</h2>
                             </div>
                         ))}
                     </div>
