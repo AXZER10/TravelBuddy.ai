@@ -121,7 +121,7 @@ function CreateTrip() {
             <div className="absolute inset-0 bg-white/30 dark:bg-black/30 backdrop-blur-sm"></div>
             <div className='z-20 p-5 :'>
                 <h2 className='font-bold text-2xl sm:text-3xl text-[#32c1c1]'>Tell us your Travel Preferences</h2>
-                <p className='mt-3 text-gray-300 text-base sm:text-lg'>Just provide some basic information, and our trip planner will generate a customized itinerary based on your preferences.</p>
+                <p className='mt-3 dark:text-gray-300 text-gray-500 text- font-semibold sm:text-lg'>Just provide some basic information, and our trip planner will generate a customized itinerary based on your preferences.</p>
                 <div className='mt-3 sm:mt-10 flex flex-col gap-8 sm:gap-10'>
                     <div className='mb-10 flex flex-col gap-2'>
                         <h2 className='text-lg sm:text-xl font-medium my-3'>What is the destination of your choice?</h2>
