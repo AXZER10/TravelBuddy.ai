@@ -27,7 +27,6 @@ function PlacesToVisit({ trip }) {
                                     <Link to={'https://www.google.com/maps/search/?api=1&query=' + activity.placeName + ',' + trip?.userSelection?.location?.label} target='_blank' key={activity.placeName + idx}>
                                         <PlacesToVisitCard activity={activity} />
                                     </Link>
-
                                 ))
                             ) : (
                                 <p className="text-gray-500 text-sm">No activities available for this day.</p>
