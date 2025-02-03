@@ -41,7 +41,7 @@ function ViewTrip() {
             className="w-full relative min-h-screen"
         >
             <div className="relative flex flex-col items-center px-4 sm:px-8 lg:px-56 gap-9 justify-center mb-16 sm:mb-24 
-    dark:bg-[url('/WorldMap.png')] bg-[url('/WorldMapLight.png')] bg-cover bg-center bg-no-repeat w-full min-h-screen py-5 gap-y-20 sm:gap-y-15 md:gap-y-10 lg:gap-y-10 xl:gap-y-10">
+    dark:bg-[url('/WorldMap.png')] bg-[url('/WorldMapLight.png')] bg-cover bg-center bg-no-repeat w-full min-h-screen py-5 gap-y-20 sm:gap-y-15 md:gap-y-10 lg:gap-y-20 xl:gap-y-20">
                 <div className="absolute inset-0 bg-white/30 dark:bg-black/30 backdrop-blur-sm"></div>
 
                 {/* Information Section */}
