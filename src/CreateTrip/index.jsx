@@ -121,10 +121,10 @@ function CreateTrip() {
             <div className="absolute inset-0 bg-white/30 dark:bg-black/30 backdrop-blur-sm"></div>
             <div className='z-20 p-5 :'>
                 <h2 className='font-bold text-2xl sm:text-3xl text-[#32c1c1]'>Tell us your Travel Preferences</h2>
-                <p className='mt-3 text-gray-500 text-base sm:text-lg'>Just provide some basic information, and our trip planner will generate a customized itinerary based on your preferences.</p>
+                <p className='mt-3 text-gray-300 text-base sm:text-lg'>Just provide some basic information, and our trip planner will generate a customized itinerary based on your preferences.</p>
                 <div className='mt-3 sm:mt-10 flex flex-col gap-8 sm:gap-10'>
-                    <div className='border'>
-                        <h2 className='text-lg sm:text-xl font-medium my-3 text-[#32c1c1]'>What is the destination of your choice?</h2>
+                    <div className='mb-10 flex flex-col gap-2'>
+                        <h2 className='text-lg sm:text-xl font-medium my-3'>What is the destination of your choice?</h2>
                         <GooglePlacesAutocomplete
                             apiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY}
                             selectProps={{
@@ -174,14 +174,14 @@ function CreateTrip() {
                         />
                     </div>
                 </div>
-                <div>
+                <div className='mb-10 flex flex-col gap-2'>
                     <h2 className='text-lg sm:text-xl font-medium my-3'>How many days do you want to travel?</h2>
                     <Input placeholder={'Ex. 3'} type="number"
                         onChange={(e) => handleInputChange('noOfDays', e.target.value)}
                         className='w-full sm:w-1/2 border-slate-300'
                     />
                 </div>
-                <div>
+                <div className='mb-10 flex flex-col gap-2'>
                     <h2 className='text-lg sm:text-xl font-medium my-3'>What is your budget?</h2>
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5'>
                         {SelectBudgetOptions.map((item, index) => (
@@ -190,12 +190,12 @@ function CreateTrip() {
                                 className={`p-4 border backdrop-blur-md border-slate-300 shadow-lg rounded-lg hover:shadow-lg hover:border-[#32c1c1] cursor-pointer ${formData?.budget == item.title && 'hover:shadow-[#32c1c179] shadow-[#32c1c179] backdrop-blur-3xl '}`}>
                                 <h2 className='text-3xl sm:text-4xl'>{item.icon}</h2>
                                 <h2 className='font-bold text-lg'>{item.title}</h2>
-                                <h2 className='text-sm text-gray-500'>{item.desc}</h2>
+                                <h2 className='text-sm text-gray-300'>{item.desc}</h2>
                             </div>
                         ))}
                     </div>
                 </div>
-                <div>
+                <div className='mb-10 flex flex-col gap-2'>
                     <h2 className='text-lg sm:text-xl font-medium my-3'>Who do you plan on traveling with on your next adventure?</h2>
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5'>
                         {SelectNoOfPersons.map((item, index) => (
@@ -204,8 +204,8 @@ function CreateTrip() {
                                 className={`p-4 border backdrop-blur-xl border-slate-300 shadow-lg rounded-lg hover:shadow-lg hover:border-[#32c1c1] cursor-pointer ${formData?.noOfPeople == item.no && 'hover:shadow-[#32c1c179] shadow-[#32c1c179] backdrop-blur-3xl'}`}>
                                 <h2 className='text-3xl sm:text-4xl'>{item.icon}</h2>
                                 <h2 className='font-bold text-lg'>{item.title}</h2>
-                                <h2 className='text-sm text-gray-500'>{item.desc}</h2>
-                                <h2 className='text-sm text-gray-500'>{item.no}</h2>
+                                <h2 className='text-sm text-gray-300'>{item.desc}</h2>
+                                <h2 className='text-sm text-gray-300'>{item.no}</h2>
                             </div>
                         ))}
                     </div>
