@@ -8,7 +8,7 @@ function Hero() {
     return (
         <div
             className="relative flex flex-col items-center px-4 sm:px-8 lg:px-56 gap-9 justify-center mb-16 sm:mb-24 
-            dark:bg-[url('/WorldMap2.png')] bg-[url('/WorldMapLight.png')] bg-cover bg-center bg-no-repeat w-full h-screen"
+    dark:bg-[url('/WorldMap2.png')] bg-[url('/WorldMapLight.png')] bg-cover bg-center bg-no-repeat w-full h-full"
         >
             {/* Blur Overlay */}
             <div className="absolute inset-0 bg-white/30 dark:bg-black/30 backdrop-blur-sm dark:backdrop-blur-none"></div>
@@ -21,7 +21,7 @@ function Hero() {
                 </p>
                 <div className='flex items-center justify-center gap-1'>
                     <p className='text-2xl font-semibold sm:text-2xl lg:text-2xl text-gray-400 text-center'>
-                        Plan 
+                        Plan
                     </p>
                     <RotatingText
                         texts={['Smarter!', 'Better!']}
@@ -47,8 +47,9 @@ function Hero() {
             <p className='relative z-10 text-base sm:text-lg lg:text-xl text-gray-500 text-center'>
                 Your personal trip planner and travel curator, creating custom itineraries tailored to your interests and budget.
             </p>
+            <img src="/HeroPage.png" alt="" className='w-full h-[450px] sm:h-[400px] object-contain z-10' />
             <Link to={'/CreateTrip'}>
-                <Button className='relative z-10 mt-6 px-6 py-3 sm:px-8 sm:py-4 bg-[#32c1c1]'>Get Started</Button>
+                <Button className='relative z-10 mt-6 px-6 py-3 sm:px-8 sm:py-4 bg-[#32c1c1] mb-10'>Get Started</Button>
             </Link>
         </div>
     )
