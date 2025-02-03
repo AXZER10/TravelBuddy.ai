@@ -15,7 +15,7 @@ function PlacesToVisit({ trip }) {
     }
 
     return (
-        <div className='p-5 bg-gray-200 mt-5 rounded-xl dark:bg-gray-500'>
+        <div className='p-5 bg-gray-200 mt-5 rounded-xl dark:bg-gray-500 z-10'>
             <h2 className='font-bold text-xl sm:text-2xl dark:text-black'>Places to Visit</h2>
             <div className="mt-4">
                 {Object.entries(itinerary).map(([day, data]) => (

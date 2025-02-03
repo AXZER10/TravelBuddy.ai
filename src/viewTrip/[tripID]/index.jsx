@@ -55,9 +55,7 @@ function ViewTrip() {
                     <Hotels trip={trip} />
                 </SectionWrapper>
                 {/* Daily Plan */}
-                <SectionWrapper>
                     <PlacesToVisit trip={trip} />
-                </SectionWrapper>
                 {/* Footer */}
                 <SectionWrapper>
                     <Footer />
