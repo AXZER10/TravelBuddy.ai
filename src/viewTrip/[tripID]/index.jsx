@@ -2,13 +2,13 @@ import { Toast } from '@/components/ui/toast';
 import { db } from '@/services/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
 import { React, useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router'
+import { useParams } from 'react-router'
 import InfoSection from '../components/InfoSection';
 import Hotels from '../components/Hotels';
 import PlacesToVisit from '@/viewTrip/components/PlacesToVisit';
 import Footer from '../components/Footer';
-import { IoIosHome } from 'react-icons/io';
-import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
+import SectionWrapper from '@/components/custom/SectionWrapper';
 
 function ViewTrip() {
 
@@ -34,16 +34,36 @@ function ViewTrip() {
 
 
     return (
-        <div className='p-10 md:px-20 lg:px-44 xl:px-56'>
-            {/* Information Section */}
-            <InfoSection tripData={trip} />
-            {/* Recommended Section */}
-            <Hotels trip={trip} />
-            {/* Daily Plan */}
-            <PlacesToVisit trip={trip} />
-            {/* Footer */}
-            <Footer />
-        </div>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="w-full relative min-h-screen"
+        >
+            <div className="relative flex flex-col items-center px-4 sm:px-8 lg:px-56 gap-9 justify-center mb-16 sm:mb-24 
+    dark:bg-[url('/WorldMap.png')] bg-[url('/WorldMapLight.png')] bg-cover bg-center bg-no-repeat w-full min-h-screen py-5 gap-y-20 sm:gap-y-15 md:gap-y-10 lg:gap-y-10 xl:gap-y-10">
+                <div className="absolute inset-0 bg-white/30 dark:bg-black/30 backdrop-blur-sm"></div>
+
+                {/* Information Section */}
+                <div className='mt-10 w-full'>
+                    <SectionWrapper>
+                        <InfoSection tripData={trip} />
+                    </SectionWrapper>
+                </div>
+                {/* Recommended Section */}
+                <SectionWrapper>
+                    <Hotels trip={trip} />
+                </SectionWrapper>
+                {/* Daily Plan */}
+                <SectionWrapper>
+                    <PlacesToVisit trip={trip} />
+                </SectionWrapper>
+                {/* Footer */}
+                <SectionWrapper>
+                    <Footer />
+                </SectionWrapper>
+            </div>
+        </motion.div>
     )
 }
 

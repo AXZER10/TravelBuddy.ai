@@ -44,7 +44,7 @@ function InfoSection({ tripData }) {
     };
 
     return (
-        <div className="">
+        <div className='w-full z-10'>
             <img 
                 src={photoUrl ? photoUrl : '/Logo.png'} 
                 className='w-full h-[250px] sm:h-[340px] rounded-xl object-cover'
