@@ -44,7 +44,7 @@ function PlacesToVisitCard({ activity }) {
             >
                 <div>
                     <img
-                        src={photoUrl ? photoUrl : '/Placeholder.jpg'}
+                        src={photoUrl ? photoUrl : '/PlaceholderNoImage.jpg'}
                         className="h-[130px] w-[340px] rounded-xl object-cover shadow-2xl"
                         alt={activity.placeName || "Placeholder"}
                     />
