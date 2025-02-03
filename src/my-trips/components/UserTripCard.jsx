@@ -43,7 +43,7 @@ function UserTripCard({ trip }) {
             <div className="bg-white shadow-lg rounded-xl overflow-hidden p-4 cursor-pointer transition-transform transform hover:scale-105 hover:shadow-xl">
                 {/* If trip has an image, use it; otherwise, show placeholder */}
                 <img
-                    src={photoUrl || "/Placeholder.jpg"}
+                    src={photoUrl || "/PlaceholderNoImage.jpg"}
                     alt={trip?.userSelection?.location?.label || "Trip Image"}
                     className="w-80 h-40 object-cover rounded-lg"
                 />
